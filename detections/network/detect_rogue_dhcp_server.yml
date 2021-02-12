@@ -21,6 +21,10 @@ how_to_implement: This search uses a standard SPL query on logs from Cisco Netwo
 known_false_positives: This search might be prone to high false positives if DHCP
   Snooping has been incorrectly configured or in the unlikely event that the DHCP
   server has been moved to another network interface.
+drilldown_name: View Details
+drilldown_search: '`cisco_networks` facility="DHCP_SNOOPING" mnemonic="DHCP_SNOOPING_UNTRUSTED_PORT"'
+drilldown_earliest_offset: 86400
+drilldown_latest_offset: 0
 references: []
 tags:
   analytic_story:
