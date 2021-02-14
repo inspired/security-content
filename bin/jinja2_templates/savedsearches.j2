@@ -73,17 +73,21 @@ action.notable.param.rule_description = {{ detection.deployment.alert_action.not
 action.notable.param.rule_title = {{ detection.deployment.alert_action.notable.rule_title | custom_jinja2_enrichment_filter(detection) }}
 action.notable.param.security_domain = {{ detection.tags.security_domain }}
 action.notable.param.severity = high
-{% if detection.drilldown_name is defined %}
-action.notable.param.drilldown_name = {{ detection.drilldown_name }}
+{% if detection.alert_action is defined %}
+{% if detection.alert_action.notable is defined %}
+{% if detection.alert_action.notable.drilldown_name is defined %}
+action.notable.param.drilldown_name = {{ detection.alert_action.notable.drilldown_name }}
 {% endif %}
-{% if detection.drilldown_search is defined %}
-action.notable.param.drilldown_search = {{ detection.drilldown_search }}
+{% if detection.alert_action.notable.drilldown_search is defined %}
+action.notable.param.drilldown_search = {{ detection.alert_action.notable.drilldown_search }}
 {% endif %}
-{% if detection.drilldown_earliest_offset is defined %}
-action.notable.param.drilldown_earliest_offset = {{ detection.drilldown_earliest_offset }}
+{% if detection.alert_action.notable.drilldown_earliest_offset is defined %}
+action.notable.param.drilldown_earliest_offset = {{ detection.alert_action.notable.drilldown_earliest_offset }}
 {% endif %}
-{% if detection.drilldown_latest_offset is defined %}
-action.notable.param.drilldown_latest_offset = {{ detection.drilldown_latest_offset }}
+{% if detection.alert_action.notable.drilldown_latest_offset is defined %}
+action.notable.param.drilldown_latest_offset = {{ detection.alert_action.notable.drilldown_latest_offset }}
+{% endif %}
+{% endif %}
 {% endif %}
 {% endif %}
 {% if detection.deployment.alert_action.email is defined %}
